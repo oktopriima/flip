@@ -33,5 +33,6 @@ func InvokeWeb(engine *gin.Engine,
 		disburseRoute := route.Group("disbursement")
 		disburseRoute.GET("", disbursement.Index)
 		disburseRoute.POST("", disbursement.Create)
+		disburseRoute.POST("/search", disbursement.Find)
 	}
 }
