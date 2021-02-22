@@ -18,6 +18,8 @@ type Withdrawals struct {
 	Amount          float64   `json:"amount"`
 	Remark          string    `json:"remark"`
 	Status          string    `json:"status"`
+	Receipt         string    `json:"receipt"`
+	TimeServed      string    `json:"time_served"`
 	CreatedAt       time.Time `json:"created_at"`
 	UpdatedAt       time.Time `json:"updated_at"`
 }

@@ -16,10 +16,28 @@ import (
 
 type WithdrawalServices interface {
 	Insert(withdrawals *models.Withdrawals, tx *gorm.DB) (*models.Withdrawals, error)
+	FindOne(criteria map[string]interface{}) (*models.Withdrawals, error)
+	Update(withdrawals *models.Withdrawals, tx *gorm.DB) error
 }
 
 type withdrawalServices struct {
 	db *gorm.DB
+}
+
+func (w *withdrawalServices) Update(withdrawals *models.Withdrawals, tx *gorm.DB) error {
+	if err := tx.Save(withdrawals).Error; err != nil {
+		return err
+	}
+	return nil
+}
+
+func (w *withdrawalServices) FindOne(criteria map[string]interface{}) (*models.Withdrawals, error) {
+	m := new(models.Withdrawals)
+	res := w.db.Where(criteria).Find(&m).Scan(&m)
+	if err := res.Error; err != nil {
+		return nil, err
+	}
+	return m, nil
 }
 
 func (w *withdrawalServices) Insert(withdrawals *models.Withdrawals, tx *gorm.DB) (*models.Withdrawals, error) {
