@@ -44,7 +44,21 @@
         <div class="container">
             <h1 class="mt-5">Flip backend test</h1>
             <p>Please follow this <a href="../disbursement">link</a> to
-                begin a test.</p>
+                create disbursement.</p>
+        </div>
+
+        <div class="container">
+            <h4 class="mt-5">Search disbursement</h4>
+            <form class="row g-3" method="post" action="../disbursement/search">
+                <div class="mb-3">
+                    <label for="bankCodeInput"></label><input type="text" class="form-control" id="bankCodeInput"
+                                                              name="transaction_id"
+                                                              placeholder="Transaction ID " required>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-primary" type="submit">Submit form</button>
+                </div>
+            </form>
         </div>
     </main>
 
