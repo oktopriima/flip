@@ -42,7 +42,7 @@ func NewClient(cfg configurations.Config) (*Client, error) {
 	return &client, nil
 }
 
-func (c *Client) CreateDisbursement(request CreateDisbursementRequest) (interface{}, error) {
+func (c *Client) CreateDisbursement(request CreateDisbursementRequest) (*Response, error) {
 	payload, err := query.Values(request)
 	if err != nil {
 		return nil, err
@@ -58,6 +58,46 @@ func (c *Client) CreateDisbursement(request CreateDisbursementRequest) (interfac
 	u.Path = path.Join(u.Path, "disburse")
 
 	r, err := http.NewRequest("POST", u.String(), body)
+	if err != nil {
+		return nil, fmt.Errorf("failed to create http request: %v", err)
+	}
+
+	r.Header.Add("Content-Type", "application/x-www-form-urlencoded")
+	r.Header.Add("Authorization", fmt.Sprintf("Basic %s", c.GenerateAuthorization()))
+
+	resp, err := http.DefaultClient.Do(r)
+	if err != nil {
+		return nil, fmt.Errorf("failed to perform http request: %v", err)
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != 200 {
+		return nil, fmt.Errorf("an error occured: %v", resp.Status)
+	}
+
+	bodyResp, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return nil, fmt.Errorf("could not read response body: %v", err)
+	}
+
+	var response Response
+	err = json.Unmarshal(bodyResp, &response)
+	if err != nil {
+		return nil, fmt.Errorf("could not unmarshal response: %v", err)
+	}
+
+	return &response, nil
+}
+
+func (c *Client) FindDisbursement(request FindDisbursementRequest) (*Response, error) {
+	u, err := url.Parse(c.BaseURL)
+	if err != nil {
+		return nil, fmt.Errorf("error parsing url. err: %v", err)
+	}
+
+	u.Path = path.Join(u.Path, fmt.Sprintf("disburse/%d", request.TransactionID))
+
+	r, err := http.NewRequest("GET", u.String(), nil)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create http request: %v", err)
 	}

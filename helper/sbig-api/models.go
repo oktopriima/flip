@@ -28,3 +28,7 @@ type CreateDisbursementRequest struct {
 	Amount        float64 `url:"amount"`
 	Remark        string  `url:"remark"`
 }
+
+type FindDisbursementRequest struct {
+	TransactionID int64 `url:"transaction_id"`
+}
