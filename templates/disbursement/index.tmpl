@@ -40,25 +40,25 @@
         <div class="container">
             <h1 class="mt-5">Create disbursement</h1>
 
-            <form class="row g-3" >
+            <form class="row g-3" method="post" action="../disbursement">
                 <div class="mb-3">
                     <label for="bankCodeInput" class="form-label">Bank Code</label>
-                    <input type="text" class="form-control" id="bankCodeInput"
+                    <input type="text" class="form-control" id="bankCodeInput" name="bank_code"
                            placeholder="BNI | BCA | MANDIRI" required>
                 </div>
                 <div class="mb-3">
                     <label for="accountNumberInput" class="form-label">Account Number</label>
                     <input type="text" class="form-control" id="accountNumberInput"
-                           placeholder="" required>
+                           placeholder="" name="account_number" required>
                 </div>
                 <div class="mb-3">
                     <label for="amountInput" class="form-label">Amount</label>
                     <input type="number" class="form-control" id="amountInput"
-                           placeholder="" required>
+                           placeholder="" name="amount" required>
                 </div>
                 <div class="mb-3">
                     <label for="remarkTextArea" class="form-label">Remark</label>
-                    <textarea class="form-control" id="remarkTextArea" rows="3"></textarea>
+                    <textarea class="form-control" id="remarkTextArea" rows="3" name="remark"></textarea>
                 </div>
 
                 <div class="mb-3">
