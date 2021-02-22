@@ -15,3 +15,7 @@ type DisbursementRequest struct {
 	Amount        float64 `form:"amount"`
 	Remark        string  `form:"remark"`
 }
+
+type DisbursementSearchRequest struct {
+	TransactionID string `form:"transaction_id"`
+}

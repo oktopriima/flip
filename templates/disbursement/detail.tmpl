@@ -1,0 +1,80 @@
+{{ define "disbursement/detail.tmpl" }}
+    <!doctype html>
+    <html lang="en" class="h-100">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <title>Flip test</title>
+
+        <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sticky-footer/">
+
+
+        <!-- Bootstrap core CSS -->
+        <link href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+              crossorigin="anonymous">
+
+        <!-- Favicons -->
+        <link rel="apple-touch-icon" href="https://getbootstrap.com/docs/5.0/assets/img/favicons/apple-touch-icon.png"
+              sizes="180x180">
+        <link rel="icon" href="https://getbootstrap.com/docs/5.0/assets/img/favicons/favicon-32x32.png" sizes="32x32"
+              type="image/png">
+        <link rel="icon" href="https://getbootstrap.com/docs/5.0/assets/img/favicons/favicon-16x16.png" sizes="16x16"
+              type="image/png">
+        <link rel="icon" href="https://getbootstrap.com/docs/5.0/assets/img/favicons/favicon.ico">
+        <meta name="theme-color" content="#7952b3">
+
+        <style>
+            .container {
+                width: auto;
+                max-width: 680px;
+                padding: 0 15px;
+            }
+        </style>
+    </head>
+    <body class="d-flex flex-column h-100">
+
+    <!-- Begin page content -->
+    <main class="flex-shrink-0">
+        <div class="container">
+            <h1 class="mt-5">Detail disbursement</h1>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Transaction ID</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Bank code</th>
+                    <th scope="col">Account Number</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Receipt</th>
+                    <th scope="col">Time served</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>{{ .transaction_code }}</td>
+                    <td>{{ .amount }}</td>
+                    <td>{{ .bank_code }}</td>
+                    <td>{{ .account_number }}</td>
+                    <td>{{ .status }}</td>
+                    <td><img src="{{ .receipt }}" class="img-thumbnail" alt="{{.bank_code}}"></td>
+                    <td>{{ .time_served }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </main>
+
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container">
+            <span class="text-muted">github.com/oktopriima</span>
+        </div>
+    </footer>
+    </body>
+    </html>
+{{end}}
