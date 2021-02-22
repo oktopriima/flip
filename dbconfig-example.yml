@@ -1,0 +1,5 @@
+local:
+  dialect: mysql
+  datasource: username:password@tcp(127.0.0.1:3306)/databasename?parseTime=true
+  dir: migrations/mysql
+  table: migrations

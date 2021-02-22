@@ -18,6 +18,6 @@ func NewContainer() *dig.Container {
 
 	c = container.NewBuildConfigContainer(c)
 	c = container.NewControllerContainer(c)
-
+	c = container.NewServicesContainer(c)
 	return c
 }

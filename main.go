@@ -9,7 +9,7 @@
 package main
 
 import (
-	"github.com/oktopriima/flip/route"
+	"github.com/oktopriima/flip/routes"
 	"log"
 )
 
@@ -17,7 +17,7 @@ func main() {
 
 	c := NewContainer()
 
-	if err := c.Invoke(route.InvokeWeb); err != nil {
+	if err := c.Invoke(routes.InvokeWeb); err != nil {
 		log.Fatalf("failed build application %v", err)
 	}
 

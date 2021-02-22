@@ -6,7 +6,7 @@
 * created at 23:12
 **/
 
-package route
+package routes
 
 import (
 	"github.com/gin-gonic/gin"
@@ -32,5 +32,6 @@ func InvokeWeb(engine *gin.Engine,
 	{
 		disburseRoute := route.Group("disbursement")
 		disburseRoute.GET("", disbursement.Index)
+		disburseRoute.POST("", disbursement.Create)
 	}
 }
