@@ -1,4 +1,4 @@
-# flip
+# **FLIP**
 
 ## installation
 This application required [Golang](https://golang.org/) v 1.15+
@@ -23,5 +23,5 @@ sql-migrate up --env=local
 
 go build
 ```
-after  `go build` command execute, there's an executeable file.
-you can just run the executeable file, and then open your browser and access [http://localhost:5000](http://localhost:5000)
+after  `go build` command execute, there's an executable file.
+you can just run the executable file, and then open your browser and access [http://localhost:5000](http://localhost:5000)
